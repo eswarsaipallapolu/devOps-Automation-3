@@ -1,0 +1,92 @@
+<mat-toolbar color="primary">
+<span class="title"> BOOKS STORE </span>
+<span class="spacer"></span>
+</mat-toolbar>
+<div class="container-for-page">
+    <mat-card class="container">
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm)" fxLayoutAlign="center center" fxLayoutGap="20px">
+        <div class="id-name-container">
+        <mat-form-field>
+            <mat-label>Book Name: </mat-label>
+            <input  matInput required class="input-box width-25 ml-1" id="book-name" type="text" formControlName="bookName" >
+            <mat-error>
+                <div *ngIf="profileForm.controls['bookName'].invalid && profileForm.controls['bookName'].touched" class="alert">
+                    <div *ngIf="profileForm.controls['bookName'].errors?.required">Name field is required!</div>
+                    <div *ngIf="profileForm.controls['bookName'].errors?.minlength">Length should be 2</div>
+                </div>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Book Id: </mat-label>
+            <input matInput required class="input-box form-element" id="book-id" type="text" formControlName="bookId">
+            <mat-error>
+            <div *ngIf="profileForm.controls['bookId'].invalid && profileForm.controls['bookId'].touched" class="alert">
+                <div *ngIf="profileForm.controls['bookId'].errors?.required">Book Id is required!</div>
+            </div>
+        </mat-error>
+        </mat-form-field>
+        </div>
+
+        <div class="author-container">
+        <mat-form-field>
+            <mat-label>Book Author: </mat-label>
+            <input matInput required class="input-box form-element" id="book-author" appearance="fill" type="text" formControlName="bookAuthor">
+            <mat-error>
+            <div *ngIf="profileForm.controls['bookAuthor'].invalid && profileForm.controls['bookAuthor'].touched" class="alert">
+                <div *ngIf="profileForm.controls['bookAuthor'].errors?.required">Author Name is required!</div>
+            </div>
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <mat-label>Book Price: </mat-label>
+            <input matInput required class="input-box form-element" id="book-price" type="number" placeholder="0" formControlName="bookPrice">
+            <span matPrefix>₹</span>
+                <span matSuffix>.00</span>
+            <mat-error>
+                <div *ngIf="profileForm.controls['bookPrice'].invalid && profileForm.controls['bookPrice'].touched" class="alert">
+                    <div *ngIf="profileForm.controls['bookPrice'].errors?.required">Book Price is required!</div>
+                </div>
+            </mat-error>
+        </mat-form-field>
+        </div>
+    
+        <div class="section-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Book Section</mat-label>
+            <mat-select required class="select" id="book-section" formControlName="bookSection">
+                <mat-option *ngFor="let b of bookSection" [value]="b.name">
+                    {{b.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error>
+                <div *ngIf="profileForm.controls['bookSection'].invalid && profileForm.controls['bookSection'].touched" class="alert">
+                    <div *ngIf="profileForm.controls['bookSection'].errors?.required">Section should be Selected!</div>
+                </div>
+            </mat-error>
+        </mat-form-field>
+        </div>
+        
+        <div class="updateSuccessMsg" *ngIf="showSuccessMsg">
+            Content Updated Successfully
+        </div>
+        
+        <section>
+            <div class="submit-btn">
+                <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">Submit</button>
+            </div>
+        </section>
+</form>
+    <nav>
+        <p>Click to view updated books</p>
+            <a class="button" routerLink="app-view">View Books</a>
+        <!--<button class="reset-button" mat-raised-button color="accent" type="reset"(click)="profileForm.reset()">Reset</button>-->
+    </nav>
+</mat-card>
+</div>
+
+      
+  
+
+

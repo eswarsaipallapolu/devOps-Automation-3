@@ -1,0 +1,61 @@
+.container-for-boxes{
+    border:1px solid black;
+    height:600px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.submit-btn-container{
+    display:block;
+}
+.box-1{
+    width:20%;
+    border-right:1px solid black;
+}
+.box-2{
+    width:80%;
+}
+.submit-btn{
+    display:block;
+}
+.expand-btn {
+    display:block;
+    width:100%;
+}
+td{
+    padding:15px;
+    font-size:22px;
+    box-sizing: border-box;
+    padding-top:10px;
+}
+.header{
+    text-align: center;
+    height:50px;
+    border-bottom:1px solid black;
+}
+.header h2{
+    padding-top:11px;
+
+}
+.updateSuccessMsg {
+    color: green;
+}
+
+.id-name-container{
+    width:400px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+
+}
+.author-container{
+    width:425px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.container{
+    position: relative;
+    display: block;
+}

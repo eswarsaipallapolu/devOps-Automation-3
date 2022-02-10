@@ -1,0 +1,29 @@
+
+.container{
+    position: relative;
+    
+    /* border:1px solid black; */
+}
+.title{
+    align-items: center;
+}
+
+.id-name-container{
+    width:400px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+
+}
+.author-container{
+    width:425px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/*.reset{
+    position: relative;
+    align-items: center;*/
+
+

@@ -1,0 +1,139 @@
+<div class="container-for-boxes">
+<div class="box box-1">
+    <div class="header">
+    <h2 class="total-books-header">{{"Total books are"+" "+books.length}}</h2>
+</div>
+    <div *ngFor="let book of books;let i=index">
+        <section class="submit-btn-container">
+            <div class="submit-btn">
+                <button mat-raised-button color="primary" #expandBtn class="expand-btn list-bef-expand"(click)="expandDetails(i)">
+                    {{i+1+" "+book.bookName}}
+                </button>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="box box-2">
+    <div class="header">
+    <h2 class="book-details-header" [style.text-align]="'center'">Select the Books whose details are needed</h2>
+    </div>
+    <div class="expanded-details make-center" *ngIf=" expandDetailsOfThis>-1 && expandDetailsVar==true">
+        <table>
+            <tr>
+                <td><label [style.font-weight]="'bold'">Book Name:</label></td>
+                <td>:</td>
+                <td><label class="form-element">{{books[expandDetailsOfThis].bookName}}</label></td>
+
+            </tr>
+            <tr>
+                <td><label [style.font-weight]="'bold'">Book Id:</label></td>
+                <td>:</td>
+                <td><label class="form-element">{{books[expandDetailsOfThis].bookId}}</label></td>
+            </tr>
+            <tr>
+                <td><label [style.font-weight]="'bold'">Book Author</label></td>
+                <td>:</td>
+                <td><label class="form-element">{{books[expandDetailsOfThis].bookAuthor}}</label></td>
+            </tr>
+            <tr>
+                <td><label [style.font-weight]="'bold'">Book Price</label></td>
+                <td>:</td>
+                <td><label class="form-element">₹{{books[expandDetailsOfThis].bookPrice}}/-</label></td>
+            </tr>
+            <tr>
+                <td><label [style.font-weight]="'bold'">Book Section</label></td>
+                <td>:</td>
+                <td><label class="form-element">{{books[expandDetailsOfThis].bookSection}}</label></td>
+            </tr>
+        </table>
+        <section>
+        <div class="submit-btn">
+            <button mat-raised-button color="accent" (click)="editThisbook()">
+                Edit
+            </button>
+        </div>
+        </section>
+        </div>
+    <div class="edit-form make-center" *ngIf="editEnabled">
+        <mat-card class="container">
+        <form [formGroup]="profileForm" (ngSubmit)="updateThisbook(profileForm)">
+            <div class="id-name-container">
+                <mat-form-field>
+                    <mat-label>Book Name: </mat-label>
+                    <input  matInput required class="input-box form-element" id="book-name" type="text" formControlName="bookName" [ngModel]="books[expandDetailsOfThis].bookName" >
+                    <mat-error>
+                        <div *ngIf="profileForm.controls['bookName'].invalid && profileForm.controls['bookName'].touched" class="alert">
+                            <div *ngIf="profileForm.controls['bookName'].errors?.required">Name field is required!</div>
+                            <div *ngIf="profileForm.controls['bookName'].errors?.minLength">Length should be 2</div>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Book Id: </mat-label>
+                    <input matInput required class="input-box form-element" id="book-id" type="text" formControlName="bookId" [ngModel]="books[expandDetailsOfThis].bookId">
+                    <mat-error>
+                    <div *ngIf="profileForm.controls['bookId'].invalid && profileForm.controls['bookId'].touched" class="alert">
+                        <div *ngIf="profileForm.controls['bookId'].errors?.required">Book Id is required!</div>
+                    </div>
+                </mat-error>
+                </mat-form-field>
+            </div>
+        
+                <div class="author-container">
+                <mat-form-field>
+                    <mat-label>Book Author: </mat-label>
+                    <input matInput required class="input-box form-element" id="book-author" type="text" formControlName="bookAuthor" [ngModel]="books[expandDetailsOfThis].bookAuthor">
+                    <mat-error>
+                    <div *ngIf="profileForm.controls['bookAuthor'].invalid && profileForm.controls['bookAuthor'].touched" class="alert">
+                        <div *ngIf="profileForm.controls['bookAuthor'].errors?.required">Author Name is required!</div>
+                    </div>
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field>
+                    <mat-label>Book Price: </mat-label>
+                    <input matInput required class="input-box form-element" id="book-price" type="number" placeholder="0" formControlName="bookPrice" [ngModel]="books[expandDetailsOfThis].bookPrice">
+                    <span matPrefix>₹</span>
+                    <span matSuffix>.00</span>
+                    <mat-error>
+                        <div *ngIf="profileForm.controls['bookPrice'].invalid && profileForm.controls['bookPrice'].touched" class="alert">
+                            <div *ngIf="profileForm.controls['bookPrice'].errors?.required">Book Price is required!</div>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            
+                <mat-form-field appearance="fill">
+                    <mat-label>Book Section</mat-label>
+                    <mat-select required class="select" id="book-section" formControlName="bookSection" [ngModel]="books[expandDetailsOfThis].bookSection">
+                        <mat-option *ngFor="let b of bookSection" [value]="b.name">
+                            {{b.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <div *ngIf="profileForm.controls['bookSection'].invalid && profileForm.controls['bookSection'].touched" class="alert">
+                            <div *ngIf="profileForm.controls['bookSection'].errors?.required">Section should be Selected!</div>
+                        </div>
+                    </mat-error>
+                </mat-form-field>
+            <section>
+                <div class="updateSuccessMsg" *ngIf="showSuccessMsg">
+                    Content Updated Successfully
+                </div>
+                <div class="submit-btn">
+                    <button class="update-btn" mat-raised-button color="accent" type="submit" [disabled]="!profileForm.valid">Submit</button>
+                </div>
+            </section> 
+        </form>
+    </mat-card>
+    </div>
+</div>
+</div>
+<div>
+    <a mat-raised-button color="primary" routerLink="">
+    Go Back
+    </a>
+</div>
+
+
+
