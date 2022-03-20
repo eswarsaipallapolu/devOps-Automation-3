@@ -7,14 +7,13 @@ pipeline
 	    {
 	        steps
 	        {
-		        bat """npm install"""	
-	            bat """ng build"""		
-	            bat """ 
+		        sh """npm install"""	
+	            sh """ng build"""		
+	            sh """ 
 	            cd "dist"
 	            cd "material"
 	            jar -cvf material.war * 
 	            """
-				
 	        }
 	    }
     }
