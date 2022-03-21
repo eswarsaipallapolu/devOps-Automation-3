@@ -27,26 +27,12 @@ pipeline
 	    {
 	        steps
 	        {
-				//This is for Testing Branch
-	            sh """
-				cd /
-	            cd /var/lib/jenkins/workspace/_Multi_Branch_Pipeline_1_Testing/dist/material
-	            tree
-	            """
-
 				//This is for Master Branch
 				sh """
 				cd /
 	            cd /var/lib/jenkins/workspace/n_Multi_Branch_Pipeline_1_master/dist/material
 	            tree
 				"""
-
-				//This is for Deploying Branch Branch
-	            sh """
-				cd /
-	            cd /var/lib/jenkins/workspace/ulti_Branch_Pipeline_1_Deploying/dist/material
-	            tree
-	            """
 	        }
 	    }
     }
