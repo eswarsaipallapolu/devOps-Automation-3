@@ -31,21 +31,21 @@ pipeline
 	            sh """
 				cd /
 	            cd /var/lib/jenkins/workspace/_Multi_Branch_Pipeline_1_Testing/dist/material
-	            find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
+	            tree
 	            """
 
 				//This is for Master Branch
 				sh """
 				cd /
 	            cd /var/lib/jenkins/workspace/n_Multi_Branch_Pipeline_1_master/dist/material
-	            find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
+	            tree
 				"""
 
 				//This is for Deploying Branch Branch
 	            sh """
 				cd /
 	            cd /var/lib/jenkins/workspace/ulti_Branch_Pipeline_1_Deploying/dist/material
-	            find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
+	            tree
 	            """
 	        }
 	    }
