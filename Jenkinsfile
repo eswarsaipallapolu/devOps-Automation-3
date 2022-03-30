@@ -19,7 +19,7 @@ pipeline
 	            sh """ 
 	            cd "dist"
 	            cd "material"
-	            jar -cvf material.war * 
+	            jar -cvf master_material.war * 
 	            """
 	        }
 	    }
