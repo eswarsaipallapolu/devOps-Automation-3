@@ -27,12 +27,12 @@ pipeline
 	    {
 	        steps
 	        {
-				//This is for Master Branch
-				sh """
-				cd /
+				      //This is for Master Branch
+				      sh """
+				      cd /
 	            cd /var/lib/jenkins/workspace/n_Multi_Branch_Pipeline_1_master/dist/material
 	            tree
-				"""
+				      """
 	        }
 	    }
     }
