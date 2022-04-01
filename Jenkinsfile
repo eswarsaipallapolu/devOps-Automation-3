@@ -14,7 +14,7 @@ pipeline
 	    {
 	        steps
 	        {
-		        sh """npm install"""	
+		          sh """npm install"""	
 	            sh """ng build"""		
 	            sh """ 
 	            cd "dist"
